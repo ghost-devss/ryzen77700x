@@ -1,0 +1,29 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Vídeos brutos na raiz (não são usados pelo site, só os de public/)
+0501.mp4
+0502.mp4
+Seedance2Fast_video_Pippit_20260425034156.mp4
