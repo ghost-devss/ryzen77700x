@@ -27,7 +27,7 @@ export function Hero() {
         <div className="absolute inset-y-0 right-0 w-[65%] pointer-events-none">
           <video
             ref={videoRef}
-            src="/hero-video-kf.mp4"
+            src={`${import.meta.env.BASE_URL}hero-video-kf.mp4`}
             muted
             playsInline
             preload="auto"
