@@ -18,9 +18,9 @@ export function FeatureShowcase() {
           >
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent z-10 opacity-60" />
             <img 
-              src="https://www.amd.com/content/dam/amd/en/images/products/processors/ryzen/2505503-ryzen-7-7700x.jpg" 
-              alt="Ryzen Processor Architecture" 
-              className="w-full h-full object-cover mix-blend-screen scale-150 origin-bottom grayscale opacity-50"
+              src={`${import.meta.env.BASE_URL}cpu-socket.jpg`} 
+              alt="AM5 CPU Socket" 
+              className="w-full h-full object-cover rounded-[2.2rem]"
             />
             
             <div className="absolute bottom-10 left-10 z-20">
