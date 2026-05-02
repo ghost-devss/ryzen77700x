@@ -11,12 +11,31 @@ export function Hero() {
   });
 
   useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Garante que o vídeo está pausado (alguns browsers autoplay muted videos)
+    const ensurePaused = () => video.pause();
+    video.addEventListener("loadedmetadata", ensurePaused);
+    video.pause();
+
+    let rafId: number;
+
     const unsubscribe = scrollYProgress.on("change", (latest) => {
-      if (videoRef.current && !Number.isNaN(videoRef.current.duration)) {
-        videoRef.current.currentTime = latest * videoRef.current.duration;
-      }
+      // Só faz seek se o vídeo tiver dados suficientes (readyState >= 2)
+      if (video.readyState < 2 || Number.isNaN(video.duration)) return;
+
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        video.currentTime = latest * video.duration;
+      });
     });
-    return () => unsubscribe();
+
+    return () => {
+      unsubscribe();
+      cancelAnimationFrame(rafId);
+      video.removeEventListener("loadedmetadata", ensurePaused);
+    };
   }, [scrollYProgress]);
 
   return (
